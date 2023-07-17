@@ -189,11 +189,12 @@ func getAPIEndpoint() string {
 // NewClient initialize an API client instance with API key and secret key.
 // You should always call this function before using this SDK.
 // Services will be created by the form client.NewXXXService().
-func NewClient(apiKey, secretKey string) *Client {
+func NewClient(endPoint, apiKey, secretKey string) *Client {
 	return &Client{
-		APIKey:     apiKey,
-		SecretKey:  secretKey,
-		BaseURL:    getAPIEndpoint(),
+		APIKey:    apiKey,
+		SecretKey: secretKey,
+		//BaseURL:    getAPIEndpoint(),
+		BaseURL:    endPoint,
 		UserAgent:  "Binance/golang",
 		HTTPClient: http.DefaultClient,
 		Logger:     log.New(os.Stderr, "Binance-golang ", log.LstdFlags),
